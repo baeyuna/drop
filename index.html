@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>탈락!</title>
+	<style>
+		.onet{height:50px; position: absolute; color: white; font-weight: bold; animation: two 1s forwards; opacity: 0; transition: all 1s;}
+		.onet:hover{font-size: 2em;}
+		@keyframes two{
+		from{opacity: 0;}to{opacity:100;}}
+
+		.waterer{ position: absolute; color: white; font-weight: bold; animation: wawa 1s forwards; opacity: 0; transition: all 1s;}
+		@keyframes wawa{
+		from{opacity: 0;}to{opacity:100;}}
+		#q0 {color: red;}
+
+		
+		#back {width:1500px; height:730px; background: black; position: absolute;}
+		#stress {width: 600px; position: absolute; left:472px; top:338px; }
+		#emer {width: 400px; height:200px; position: absolute; color:red; top: 150px; left: 610px; font-size: 10em; font-weight: bold; animation-name: change; animation-iteration-count: infinite; transition: all 1s; animation-duration: 0.7s;}
+		@keyframes change {
+  	 	 from {color: black;}
+   		 to {color: red;}}
+
+   		 #message{ width:350px;height: 150px; top:240px; left:920px; position: absolute; animation:drop 10s;}
+      	 @keyframes drop{
+            from{margin-bottom:0px;}
+            to{margin-bottom:100px;}
+        }
+
+        #sub{width: 2700px; height:100px; position: absolute; color: yellow; animation: moving 30s alternate-reverse infinite; top:700px; font-weight: bold; }
+         @keyframes moving{
+            from{margin-left:-2700px;}
+            to{margin-left:1510px;}
+        }
+
+       #uu {width: 200px; position: absolute; animation: cry 5s alternate infinite;}
+       	@keyframes cry{
+			from{margin-left:-220px;}
+			to	{margin-left:1520px;
+			transform: rotate3D(0,0,360,1800deg);}
+		}
+		#pic {width:480px; position: absolute; top: 340px; left: 1133px; transform: rotate(-90deg);}
+
+		#fire {width:180px; position: absolute; top: 550px; left: 680px;}
+		#fire2 {width:400px; position: absolute; animation: aaa 3.5s infinite; }
+		 @keyframes aaa{
+            from{margin-left:-500px;}
+            to{margin-left:2000px;}
+        }
+	</style>
+</head>
+<body>
+		<audio id="music">
+		<source src="music.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio id="ah">
+		<source src="ah.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio id="ding">
+		<source src="ding.mp3" type="audio/mpeg">
+		</audio>
+
+
+	<div id="back"></div>
+	<img src="./img/depress.gif" id="pic">
+	<img src="./img/message.png" id="message">
+	<img src="./img/fire.jpg" id="fire2">
+	<img src="./img/stress.png" id="stress">
+	<img src="./img/uu.png" id="uu">
+	<div id="emer">탈락</div>
+	<div id="sub">우리 기업 공채에 지원해 주셔서 진심으로 감사드립니다. 귀하께서 갖고 계신 뛰어난 능력과 잠재력을 높게 평가하는 바입니다. 모집인원 제한으로 귀하를 채용할 수 없음을 유감스럽게 생각합니다. 기대치 않은 결과에 아쉬움이 많이 남으시겠지만, 우리기업이 추구하는 인재상과 맞지 않아 결정한 것이니, 실망하지 마시고 더 좋은 기회를 통해 꿈을 이루시길 바랍니다.</div>
+	<div id="one"></div>
+	<div id="oneCon"></div>
+	<div id="water"></div>
+	<div id="waCon"></div>
+	<img src="./img/fire.gif" id="fire">
+</body>
+
+	<script type="text/javascript">
+		var toggle1 = "off";
+	stress.onclick =function() {
+		if(toggle1 == "off"){
+		stress.setAttribute("src","./img/sul.png")
+		music.play();
+		toggle1	 = "on";
+		}else{
+			stress.setAttribute("src","./img/stress.png")
+			toggle1 = "off"
+		}
+	}
+/*------------------------------message-------------------------------*/
+	var message = document.getElementById("message");
+	message.style.visibility="hidden";
+
+    emer.onclick = function(){
+    message.style.visibility="visible";
+    ding.play();
+
+    for(var i=0; i<4; i++){
+    var t= document.getElementById("message");
+    var k = t.cloneNode(true);
+    k.style.left = randomBH(0,300)+"px";
+    k.style.top =  randomBH(0,600)+"px";
+
+    var time = Math.random();
+    k.style.animationDuration = time + "s";
+
+    document.body.appendChild(k);
+    }
+
+    function randomBH(min,max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() *(max - min));}
+    }
+    /*----------------------------데굴데굴----------------*/
+    document.getElementById("pic").style.visibility = "hidden";
+    var toggle2 = "off";
+		uu.onclick =function() {
+		if(toggle2 == "off"){
+		toggle2	 = "on";
+		document.getElementById("pic").style.visibility = "visible";
+		}else{
+			toggle2 = "off"
+			document.getElementById("pic").style.visibility = "hidden";
+		}
+		}
+	/*------------------------------------------*/
+	var text = "불 합 격 . 불 합 격 하 셨 습 니 다 . 불 합 격 .";
+		var j = text.split(" ");
+		
+		for(var i=0; i<j.length; i++){
+			var c = document .getElementById("one");
+			var d = c.cloneNode(true);
+			d.className = "onet"
+			d.id = "a"+i;
+			d.innerHTML = j[i];
+			d.style.top = 150+ 30*i +"px";
+			d.style.animationDelay = i*0.5 +"s";
+			d.style.animationIterationCount = "infinite";
+			oneCon.appendChild(d);
+			}
+
+		/*------------------------------------------*/
+	var text = "불합격 하셨습니다.";
+		var h = text.split(" ");
+		
+		for(var i=0; i<h.length; i++){
+			var v = document .getElementById("water");
+			var x = c.cloneNode(true);
+			x.className = "waterer"
+			x.id = "q"+i;
+			x.innerHTML = h[i];
+			x.style.top = 200+"px";
+			x.style.left = 1300+ 80*i +"px";
+			x.style.animationDelay = i*0.5 +"s";
+			d.style.animationIterationCount = "infinite";
+			waCon.appendChild(x);
+			}
+
+		document.getElementById("fire").style.visibility = "hidden";
+		document.getElementById("fire2").style.visibility = "hidden";
+    	var toggle3 = "off";
+		q0.onclick =function() {
+		if(toggle3 == "off"){
+		toggle3	 = "on";
+		ah.play();
+		document.getElementById("fire").style.visibility = "visible";
+		document.getElementById("fire2").style.visibility = "visible";
+		}else{
+			toggle3 = "off"
+			document.getElementById("fire").style.visibility = "hidden";
+			document.getElementById("fire2").style.visibility = "hidden";
+		}
+		}
+
+
+	</script>
+</html>
